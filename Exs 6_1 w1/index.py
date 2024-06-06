@@ -1,5 +1,7 @@
 import relu
 import sigmoid
+import is_number
+import elu
 
 data_env = []
 
@@ -9,33 +11,44 @@ def input_data():
 
     # loop 1: input dimension data
     while True:
-        try:
+        dimension_data = input("Enter dimension list: ")
 
-            dimension_data = int(input("Enter dimension list: "))
-
-            count_loop2 = 0
-            # loop 2: append data to list
-            while True:
-                for i in range(dimension_data):
-                    try:
-                        temp = float(input(f"location {i+1}: "))
-                        data_env.append(temp)
-                        
-                        # end loops condition
-                        if count_loop2 == dimension_data-1:
-                            return
-                        count_loop2 += 1
-
-                    except:
-                        print("input must float or int")
-                        continue
-
-        except:
+        if is_number.calc(dimension_data, is_int=True) == False:
             print("input must int")
             continue
+
+        # loop 2: append data to list
+        for i in range(int(dimension_data)):
+
+            # catching err point until user enter right data
+            while True:
+                temp = input(f"location {i+1}: ")
+
+                if is_number.calc(temp) == False:
+                    print("input must float or int")
+                    continue
+                else:
+                    data_env.append(float(temp))
+                    break
+        return
 
 
 input_data()
 
-print(f'relu {relu.calc(data_env)}')
-print(f'sigmoid {sigmoid.calc(data_env)}')
+
+def export_result():
+    while True:
+
+        user_choice = input(
+            """Input activation Function ( sigmoid*1 | relu*2 | elu*3 ) : """
+        )
+        if user_choice == "sigmoid" | user_choice == "1":
+            print(f"sigmoid {sigmoid.calc(data_env)}") 
+            break
+        if user_choice == "relu" | user_choice == "2":
+            print(f"sigmoid {relu.calc(data_env)}")
+            break
+        if user_choice == "elu" | user_choice == "3":
+            print(f"sigmoid {elu.calc(data_env)}")
+            break
+        print(f'{user_choice} is not supportted')

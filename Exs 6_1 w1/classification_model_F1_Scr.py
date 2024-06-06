@@ -1,4 +1,5 @@
 import sigmoid
+import is_number
 
 # set up env vars
 tp_env = None
@@ -32,13 +33,14 @@ def input_data():
 
         # conditions break or continue inf loop 
         if (
-            isinstance(tp_env, int)
-            == True & isinstance(fp_env, int)
-            == True & isinstance(fn_env, int)
+            isinstance(tp_env, float)
+            == True & isinstance(fp_env, float)
+            == True & isinstance(fn_env, float)
             == True
         ):
             break
         else:
+            
             if len(err_logs) == 1:
                 print(f"{err_logs[0]} must be greater than zero")
             elif len(err_logs) > 1:
@@ -64,29 +66,27 @@ def catch_err(sequence_err):
     while(True):
         
         temp = input(f'enter {sequence_err}: ')
-        try:
-            convert_to_int = int(temp)
-
-            # overwrite env vars
-            if sequence_err == "tp":
-                tp_env = convert_to_int
-            if sequence_err == "fp":
-                fp_env = convert_to_int
-            if sequence_err == "fn":
-                fn_env = convert_to_int
-
-            if (convert_to_int <= 0):
-                err_logs.append(sequence_err)
-
-            return convert_to_int
-
-        except:
+        if (is_number.calc(temp) == False):
             print(f'{sequence_err} must be int')
-            continue
+            
+        convert_to_int = float(temp)
+
+        # overwrite env vars
+        if sequence_err == "tp":
+            tp_env = convert_to_int
+        if sequence_err == "fp":
+            fp_env = convert_to_int
+        if sequence_err == "fn":
+            fn_env = convert_to_int
+
+        if (convert_to_int <= 0):
+            err_logs.append(sequence_err)
+
+        return convert_to_int
+
     return
 
 input_data()
-
 
 precision_env = calc_precision(tp_env=tp_env, fp_env=fp_env)
 recall_env = calc_recall(tp_env=tp_env, fn_env=fn_env)

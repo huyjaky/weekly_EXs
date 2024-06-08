@@ -2,7 +2,6 @@ import math
 
 sigmoid_data_env = []
 
-
 def calc(list_data):
     global sigmoid_data_env
 

@@ -9,7 +9,7 @@ data_env = []
 def input_data():
     global data_env
 
-    # loop 1: input dimension data
+    # NOTE: loop 1: input dimension data
     while True:
         dimension_data = input("Enter dimension list: ")
 
@@ -17,7 +17,7 @@ def input_data():
             print("input must int")
             continue
 
-        # loop 2: append data to list
+        # NOTE: loop 2: append data to list
         for i in range(int(dimension_data)):
 
             # catching err point until user enter right data
@@ -38,7 +38,6 @@ input_data()
 
 def export_result():
     while True:
-
         user_choice = input(
             """Input activation Function ( sigmoid*1 | relu*2 | elu*3 ) : """
         )

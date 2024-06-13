@@ -1,5 +1,6 @@
 import sigmoid
 import is_number
+import module
 
 # set up env vars
 tp_env = None
@@ -52,9 +53,7 @@ def input_data():
             fp_env = "Null"
             fn_env = "Null"
             err_logs = []
-            continue
 
-    return
 
 
 def catch_err(sequence_err):
@@ -84,7 +83,6 @@ def catch_err(sequence_err):
 
         return convert_to_int
 
-    return
 
 input_data()
 
@@ -95,4 +93,3 @@ f1_scrs_env = calc_f1_scrs(calc_precision=precision_env, calc_recall=recall_env)
 print(f'precision is {precision_env}')
 print(f'recall is {recall_env}')
 print(f'f1-score is {f1_scrs_env}')
-

@@ -17,11 +17,14 @@ def input_data():
 
         loss_name = input("Input loss name (MAE | MSE | RMSE) :")
 
-        if (loss_name == 'MAE'): loss.calc_MAE(num_samples)
-        elif (loss_name == 'MSE'): loss.calc_MSE(num_samples)
-        elif (loss_name == 'RMSE'): loss.calc_RMSE(num_samples)
+        if loss_name == "MAE":
+            loss.calc_mae(num_samples)
+        elif loss_name == "MSE":
+            loss.calc_mse(num_samples)
+        elif loss_name == "RMSE":
+            loss.calc_rmse(num_samples)
         else:
-            print('loss method not supported')
-            continue
+            print("loss method not supported")
+
 
 input_data()

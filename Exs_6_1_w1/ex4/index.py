@@ -20,7 +20,6 @@ def input_data ():
             input_n = input('enter n: ')
             if (is_number.calc(x=input_n, is_int=True) == False):
                 print('n must be int')
-                continue
             else: 
                 input_n = int(input_n)
                 break

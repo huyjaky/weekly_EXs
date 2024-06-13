@@ -53,7 +53,6 @@ def input_data():
 
         lst_data.append(float(temp))
         countdown -= 1
-        continue
     move_window(window_size=window_size, lst_data=lst_data)
 
 
